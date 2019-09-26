@@ -1,0 +1,58 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0.14rem solid;
+}
+
+html {
+	font-size: 1vw;
+}
+
+body {
+	background-color: yellow;
+	font-size: 2rem;
+}
+
+a {
+	text-decoration: none;
+	font-size: 2rem;
+	color: black;
+}
+
+#link2 {	
+	display: block;
+}
+
+h1 {
+	font-size: 5rem;
+	color: rgba(0, 0, 0, 0.25);
+	font-weight: 200;
+	text-align: center;
+	letter-spacing: 3px;
+	border-bottom: 1rem solid rgba(255, 0, 0, 0.25);
+	padding-bottom: 20px;
+}
+
+h1:hover {
+	color: red;
+}
+
+#myid {
+	font-size: 10rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+form {
+	font-size: 2rem;
+}
+
+/*h1, h2 {
+	font-size: 6rem;
+}*/
+
+div {
+	display: inline-block;
+}

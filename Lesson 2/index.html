@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The form</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<div id="myid">
+		<h1>The form</h1>
+	</div>
+
+	<h2>Other h2</h2>
+	
+	<a href="https://www.google.com">Link to Google</a>
+
+	<a id="link2" href="">Link 2</a>
+
+	<p>text</p>
+
+	<form>
+		<div>
+			<label for="name">Enter your name: </label>
+			<input type="text" name="name" id="name" placeholder="Ivan" pattern="[A-Za-zА-Яа-яЁё]{2,}" required>
+		</div>
+		
+		<div>
+			<label for="surname">Enter your surname: </label>
+			<input type="text" name="surname" id="surname" placeholder="Ivanov" pattern="[A-Za-zА-Яа-яЁё]{2,}" required>
+		</div>
+		
+		<button type="submit">Send</button>
+	</form>
+</body>
+</html>
