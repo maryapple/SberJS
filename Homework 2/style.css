@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	margin: 0;
+	font-size: 14px;
+}
+
+nav {
+	height: 4.5rem;
+	background: rgb(36, 41, 46);
+	color: white;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+}
+
+nav li {
+	padding: 2rem;
+}
+
+.container {
+	display: flex;
+	margin: auto 17.1%;
+}
+
+.col-1 {
+	flex-direction: column;
+	padding-top: 1.8rem;
+}
+
+img {
+	width: 19.5rem;
+	height: 19.225rem;
+}
+
+#userFoto {
+	margin-bottom: -0.33rem;
+}
+
+#setStatus {
+	border: 1px solid rgb(225, 228, 232);
+	padding: 1rem 0 1rem .5rem;
+	color: #586069;
+}
+
+i {
+	padding-right: .5rem;
+}
+
+.userName {
+	font-size: 2rem;
+	font-weight: 500;
+	font-family: Helvetica,Arial,sans-serif;
+	padding-top: 2rem;
+}
