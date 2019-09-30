@@ -16,7 +16,7 @@ html, body {
 	color: #24292e;
 }
 
-/* Используем свойство flex box, чтобы было легче управлять блоками на странице */
+/* Используем свойство flexbox, чтобы было легче управлять блоками на странице */
 /* Используем селектор по имени класса */
 .container {
 	display: flex;
@@ -60,6 +60,7 @@ div img {
 	list-style-type: none;
 }
 
+/* Псевдоселектор hover: */
 #main-nav li:hover {
 	color: #d1d5da;
 }
@@ -81,12 +82,14 @@ div img {
 	padding: 2rem 2rem 0 0;
 	list-style-type: none;
 }
+
 #userFoto img {
 	width: 19.5rem;
 	height: 19.225rem;
 	border-radius: .5rem;
 }
 
+/* Далее следуют аналогичные описанным выше селекторы: */
 .userFullName {
 	font-size: 1.8rem;
 	font-weight: 600;
@@ -134,7 +137,6 @@ i {
 }
 
 /* Стили для (условной) правой колонки страницы*/
-
 .col-2 {
 	width: 100%;
 	display: flex;
@@ -193,10 +195,12 @@ ol li {
 	width: 100%;
 }
 
+/* Псевдоселектор для первого элемента списка*/
 ol li:first-child {
 	padding-right: .5rem;
 }
 
+/* Псевдоселектор для последнего элемента списка*/
 ol li:last-child {
 	padding-left: .5rem;
 }
@@ -299,6 +303,7 @@ form h2{
 	color: #000;
 }
 
+/* Медиазапросы для различной ширины экрана*/
 @media (max-width: 1420px) {
 	.container {
 		display: flex;
