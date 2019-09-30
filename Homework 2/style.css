@@ -1,60 +1,183 @@
+/* Универсальный селектор "*" */
 * {
 	margin: 0;
 	padding: 0;
 }
 
+/* Все стили написаны в относительных единицах измерения: px, em, rem, %*/
+
+/* Зададим корневой элемент в пикселях, 
+размер всех последующих элементов будет зависеть от него */
+/* Используем селекторы по имени тега */
 html, body {
 	margin: 0;
 	font-size: 14px;
+	font-family: Helvetica, sans-serif;
+	color: #24292e;
 }
 
-nav {
-	height: 4.5rem;
-	background: rgb(36, 41, 46);
-	color: white;
-}
-
-nav ul {
-	display: flex;
-	flex-direction: row;
-}
-
-nav li {
-	padding: 2rem;
-}
-
+/* Используем свойство flex box, чтобы было легче управлять блоками на странице */
+/* Используем селектор по имени класса */
 .container {
 	display: flex;
 	margin: auto 17.1%;
 }
 
-.col-1 {
+/* Стили для основного меню*/
+/* Используем селектор по имени айдишника */
+#main-nav {
+	height: 5.1rem;
+	background: rgb(36, 41, 46);
+	color: white;
+}
+
+/* Комбинируем селектор по айдишнику и потомственные селекторы 
+(Combine the Descendant & ID Selectors) */
+#main-nav ul {
+	display: flex;
+	flex-direction: row;
+	font-size: 16px;
+}
+
+/* Используем потомственные селекторы (Descendant Selector) */
+ul div {
+	padding: 1.35rem 1.5rem 0 0;
+}
+
+div img {
+	width: 2.25rem;
+	padding: 0;
+}
+
+/* Комбинируем селектор по айдишнику и потомственные селекторы 
+(Combine the Descendant & ID Selectors) */
+#main-nav li {
+	padding: 2rem 2rem 0 0;
+	list-style-type: none;
+}
+
+/* Стили для (условной) левой колонки страницы*/
+/* Селекторы с запятой (Comma Combinator)*/
+.col-1, .col-2 {
 	flex-direction: column;
 	padding-top: 1.8rem;
 }
 
-img {
+.col-1 {
+	margin-right: 3.3rem;
+}
+
+/* Комбинируем селектор по айдишнику и потомственные селекторы 
+(Combine the Descendant & ID Selectors) */
+#main-nav li {
+	padding: 2rem 2rem 0 0;
+	list-style-type: none;
+}
+#userFoto img {
 	width: 19.5rem;
 	height: 19.225rem;
+	border-radius: .5rem;
 }
 
-#userFoto {
-	margin-bottom: -0.33rem;
-}
-
-#setStatus {
-	border: 1px solid rgb(225, 228, 232);
-	padding: 1rem 0 1rem .5rem;
-	color: #586069;
-}
-
-i {
-	padding-right: .5rem;
+.userFullName {
+	font-size: 1.8rem;
+	font-weight: 600;
+	font-family: Helvetica,Arial,sans-serif;
+	letter-spacing: 1px;
+	color: #24292e;
 }
 
 .userName {
-	font-size: 2rem;
-	font-weight: 500;
-	font-family: Helvetica,Arial,sans-serif;
-	padding-top: 2rem;
+	font-size: 1.5rem;
+	color: #666;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.userInfo ul li {
+	list-style-type: none;
+}
+
+.userInfo ul {
+	line-height: 1.75rem;
+	margin-bottom: 0.4rem;
+}
+
+.userInfo ul li span {
+	display: inline-block;
+	width: 1.5rem;
+}
+
+.userInfo p{
+	padding: 1.25rem 0;
+}
+
+i {
+	color: #6a737d;
+}
+
+.blockUser {
+	color: #586069;
+	font-size: 12px;
+}
+
+/* Стили для (условной) правой колонки страницы*/
+
+col-2 {
+	width: 100%;
+	display: flex;
+}
+
+#secondary-nav {
+	height: 3.9rem;
+	border-bottom: 1px solid black;
+	width: 100%;
+}
+
+#secondary-nav ul {
+	display: flex;
+	flex-direction: row;
+}
+
+#secondary-nav li {
+	padding: 1.4rem 2.3rem 0 0;
+	list-style-type: none;
+	color: #586069
+}
+
+/* Псевдоселектор для первого элемента списка*/
+#secondary-nav ul li:first-child {
+	padding-left: .5rem;
+}
+/*
+#secondary-nav ul li div {
+	display: flex;
+	flex-direction: row;
+}*/
+
+.pinned-items {
+	margin-top: 1.9rem;
+}
+
+.pinned-items ol li {
+	list-style-type: none;
+}
+
+.pinned-items h2 {
+	font-weight: 400;
+	font-size: 1.1rem;
+	padding-bottom: 1rem;
+}
+
+.pinned-items {
+	width: 30rem;
+}
+
+.box {
+	border: 1px solid #d1d5da;
+	padding: 1rem 1rem 1rem 1rem;
+	height: 4.85rem;
+	border-radius: .25rem;
+	display: flex;
+	flex-direction: row;
 }

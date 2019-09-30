@@ -4,24 +4,85 @@
 	<meta charset="UTF-8">
 	<title>The Github Copy</title>
 	<link rel="stylesheet" href="style.css">
+	<!-- Link to FontAwesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
-	<nav>
-		<ul>
-			<li>Pull requests</li>
-			<li>Issues</li>
-		</ul>
+	<nav id="main-nav">
+		<div class="container">
+			<ul>
+				<div>
+					<img src="img/github.png" alt="">
+				</div>
+				<li>Why GitHub?</li>
+				<li>Enterprise</li>
+				<li>Explore</li>
+				<li>Marketplace</li>
+				<li>Pricing</li>
+			</ul>
+		</div>
 	</nav>
 
 	<div class="container">
 		<div class="col-1">
 			<div id="userFoto"><img src="img/user.jpg" alt=""></div>
-			<p id="setStatus"><i class="far fa-grin fa-lg"></i>Set status</p>
-			<p><span class="userName">Maria Kurysheva</span><br>
-			maryapple</p>
+			<div class="userInfo">
+				<p>
+					<span class="userFullName">Maria Kurysheva</span>
+					<br>
+					<span class="userName">maryapple</span>
+				</p>
+				<ul>
+					<li><span><i class="fas fa-user-friends"></i></span>HSE</li>
+					<li><span><i class="fas fa-map-marker-alt"></i></span>Moscow, Russia</li>
+				</ul>
+				<p class="blockUser">Block or report user</p>
+			</div>
 		</div>
+		
+		<div class="col-2">
+			<nav id="secondary-nav">
+				<ul>
+					<li>Overview</li>
+					<li><span>Repositories</span>
+						<!-- <svg width="20" height="20">
+							<circle r="10" cx="10" cy="10"
+			                fill="rgba(27,31,35,.08)"
+			                />
+						</svg> -->
+					</li>
+					<li>Projects</li>
+					<li>Stars</li>
+					<li>Followers</li>
+					<li>Following</li>
+				</ul>
+			</nav>
 
+			<div class="pinned-items">
+				<h2>Pinned</h2>
+				<ol>
+					<li>
+						<div class="box">
+							<div class="content">
+								<p>Repository 1</p>
+								
+
+								<p>Javascript</p>
+							</div>
+						</div>
+						<div class="box">
+							<div class="content">
+								<p>Repository 2</p>
+								
+								
+								<p>Javascript</p>
+							</div>
+						</div>
+					</li>
+					<li></li>
+				</ol>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
