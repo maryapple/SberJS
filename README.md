@@ -1,6 +1,6 @@
 # SberJS
 
-Домашнее задание №2
+Домашнее задание №2. 
 Данная страница поддерживается в браузерах:
 
 Chrome 77, Opera 63, Internet Explorer 11, Microsoft Edge 44
