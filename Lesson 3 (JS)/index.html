@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const menu = {
+      'ЛАТТЕ': 100, 
+      'БАНАНОВЫЙ КАПУЧИНО': 120, 
+      'ВАНИЛЬНЫЙ РАФ': 110, 
+      'АМЕРИКАНО': 90
+    }
+
+    function baristaAsk(){
+      let cupOfCoffee = prompt('Что желаете?', '');
+      return cupOfCoffee;
+    }
+
+    function baristaSay(coffee, charity, price) {
+
+      if(Object.keys(menu).includes(coffee)) {
+          //Object.keys - возвращает массив, содержащий ключи объекта, 
+          // .includes - проверяет наличие заданного аргумента в массиве
+          console.log(`Вы заказали ${coffee} и сделали пожертвование. С Вас ${price + Number(charity)} рублей`);
+        }
+      else {
+        console.log(`Извините, ничем не могу помочь. Хорошего дня!`);
+      }
+    }
+
+    function order(){
+      const donation = '10';
+      const coffee = baristaAsk();
+      baristaSay(coffee, donation, menu[coffee]);
+    }
+
+    console.log(order())    
+  </script>
+</body>
+</html>
