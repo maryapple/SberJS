@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+			/**
+	 * Обучаам баристу инвентаризации.
+	 * Делается заказ, бариста проверяет, есть ли в меню такие кофе и печенье, 
+	 * сверяется с рецептом, смотрит наличие ингредиентов
+	 * и готовит заказ / извиняется и дозаказывает ингредиенты
+	 */
+
+	const recipes = {
+	  'банановый латте': ['банановый сироп', 'молоко', 'кофе'],
+	  'черничный капучино': ['черничный сироп', 'молоко', 'кофе'],
+	  'баунти раф': ['раф-основа', 'кокосовое молоко', 'розовая соль'],
+	  'американо': ['кофе']
+	}
+
+	const cookies = ['шоколадное', 'овсяное', 'мятное', 'малиновое']
+
+	const box = {
+	  'банановый сироп': 2,
+	  'черничный сироп': 0,
+	  'молоко': 10,
+	  'кофе': 10,
+	  'раф-основа': 3, 
+	  'кокосовое молоко': 0, 
+	  'розовая соль': 1
+	}
+
+	function checkOrderItem(meal, menu) {
+		if (Object.keys(menu).includes(meal)) {
+			return true;
+		}
+		return false;
+	}
+
+	function checkCookie(cookie, cookies) {
+		for (let i = 0; i < cookies.length; i++) {
+			if (cookie == cookies[i]) {
+				return true;
+			}
+		}
+		return false;
+		// for (i in cookies) {
+		// 	console.log(i);
+		// 	if (cookie == i) {
+		// 		return true;
+		// 	}
+		// }
+		// return false;
+	}
+
+	function checkIngredients(coffee){
+
+		for (const item of recipes[coffee]) {
+			if (box[item] === 0) {
+				// console.log('');
+				return false;
+			}
+		}
+		return true;
+
+		// for (i in recipes[coffee]) {
+				
+		// 		if (box[i] === 0) {
+		// 		return false;
+		// 	}
+		// }
+		// return true;
+	}
+
+	function order(coffee, cookie) {
+		
+		const dictionary = {
+			allOk:`Вот ваш заказ: ${coffee} и ${cookie} печенье! Хорошего дня!`,
+			allNotOk:`Мы не можем обработать ваш заказ, извините.`,
+			noCookie:`К сожалению, у нас нет такого печенья. Вот ваш ${coffee}`,
+			noCoffee:`К сожалению, сейчас не можем приготовить ${coffee}. Вот ваше ${cookie} печенье`, 
+		}
+
+		if (checkOrderItem(coffee, recipes)) {
+			if (checkIngredients(coffee) && checkCookie(cookie, cookies)) {
+				console.log(dictionary.allOk);
+			}
+			else if (checkIngredients(coffee) && !checkCookie(cookie, cookies)) {
+				console.log(dictionary.noCookie);
+			}
+			else if(!checkIngredients(coffee) && checkCookie(cookie, cookies)) {
+				console.log(dictionary.noCoffee);
+			}
+			else if(!checkIngredients(coffee) && !checkCookie(cookie, cookies)) {
+				console.log(dictionary.allNotOk);
+			}
+		}
+		else {
+			console.log(dictionary[allNotOk]);
+		}
+		console.log('-----Следующий заказ-----')
+	}
+
+	order('американо', 'мятное');
+	order('баунти раф', 'апельсиновое');
+	order('банановый латте', 'мятное');
+	order('баунти раф', 'малиновое');
+
+	// Ожидаемый вывод //
+	/*
+	"Вот ваш заказ: американо и мятное печенье! Хорошего дня!"
+	"-----Следующий заказ-----"
+	"--Памятка: Нужно заказать кокосовое молоко"
+	"Мы не можем обработать ваш заказ, извините."
+	"-----Следующий заказ-----"
+	"Вот ваш заказ: банановый латте и мятное печенье! Хорошего дня!"
+	"-----Следующий заказ-----"
+	"--Памятка: Нужно заказать кокосовое молоко"
+	"К сожалению, сейчас не можем приготовить баунти раф. Вот ваше малиновое печенье"
+	"-----Следующий заказ-----"
+	*/
+
+	</script>
+</body>
+</html>
