@@ -64,6 +64,7 @@ function setImage(url) {
 
 // Выводим name, eye_color, gender, films
 function setInformation(obj) {
+	span.innerHTML = '';
 	for (key in obj) {
 		if (key == "name" || key == "eye_colors" || key == "gender" || key == "films") {
 			let p = document.createElement('p');
