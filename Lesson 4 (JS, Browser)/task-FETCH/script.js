@@ -40,12 +40,18 @@ function addOptions(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].name === 'Cat') {
 			for (let j = 0; j < arr[i].people.length; j++) {
+				if (j === 0) {
+					const option = document.createElement('option');
+					option.text = 'Select a number';
+					option.style.color = 'gray';
+					selectList.append(option);
+				}
 				// Добавляем номера в селект
 				const option = document.createElement('option');
 				option.text = ++cnt;
 				selectList.append(option);
 				// Запоминаем ссылку на выбранного персонажа
-				option.value = arr[i].people[i];
+				option.value = arr[i].people[j];
 			}
 		}
 	}
