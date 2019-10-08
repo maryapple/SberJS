@@ -8,11 +8,9 @@
 * https://ghibliapi.herokuapp.com/#
 **/
 
-function renderCatPic(){
-	fetch(`https://source.unsplash.com/200x200/?cat`)
-		.then((response) => response.url) 
-		.then(url => setImage(url))
-		.catch(err => console.log(err));
+async function renderCatPic(){
+	const pictureData = await fetch(`https://source.unsplash.com/200x200/?cat`);
+	img.src = pictureData.url;	
 }
 
 function getAllChars() {
@@ -29,9 +27,6 @@ function getInformation(id) {
 		.catch(err => console.log(err));
 }
 
-/*async function getData() {
-	const arrayOfData = await getAllChars();
-}*/
 
 const selectList = document.querySelector('select');
 const img = document.querySelector('img');
@@ -40,12 +35,12 @@ const span = document.querySelector('span');
 // Выведем в выпадающий список всех персонажей (people) с name 'Cat'. 
 // В значении опции - порядковый номер персонажа
 function addOptions(arr) {
-	let cnt = 0;
+	
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].name === 'Cat') {
 			for (let j = 0; j < arr[i].people.length; j++) {
 				const option = document.createElement('option');
-				option.text = ++cnt;
+				option.text = j+1;
 				option.value = arr[i].id;
 				selectList.append(option);
 			}
@@ -58,15 +53,16 @@ function selectedOption() {
 	renderCatPic();
 }
 
-function setImage(url) {
-	img.src = url;
-}
+
 
 // Выводим name, eye_color, gender, films
 function setInformation(obj) {
+
+	const intrestingKeys =["name","eye_colors","gender","films"]
+
 	span.innerHTML = '';
 	for (key in obj) {
-		if (key == "name" || key == "eye_colors" || key == "gender" || key == "films") {
+		if (intrestingKeys.includes(key)) {
 			let p = document.createElement('p');
 			p.innerHTML = `<strong>${key}:</strong> ${obj[key]}`;
 			span.append(p);
@@ -76,3 +72,4 @@ function setInformation(obj) {
 
 getAllChars();
 selectList.addEventListener('change', selectedOption);
+selectedOption();
