@@ -22,16 +22,12 @@ function getAllChars() {
 		.catch(err => console.log(err));
 }
 
-function getInformation(id) {
-	fetch(`https://ghibliapi.herokuapp.com/species/${id}`)
+function getInformation(link) {
+	fetch(link)
 		.then(response => response.json())
 		.then(data => setInformation(data))
 		.catch(err => console.log(err));
 }
-
-/*async function getData() {
-	const arrayOfData = await getAllChars();
-}*/
 
 const selectList = document.querySelector('select');
 const img = document.querySelector('img');
@@ -44,16 +40,18 @@ function addOptions(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].name === 'Cat') {
 			for (let j = 0; j < arr[i].people.length; j++) {
+				// Добавляем номера в селект
 				const option = document.createElement('option');
 				option.text = ++cnt;
-				option.value = arr[i].id;
 				selectList.append(option);
+				// Запоминаем ссылку на выбранного персонажа
+				option.value = arr[i].people[i];
 			}
 		}
 	}
 }
 
-function selectedOption() {
+function renderTheData() {
 	getInformation(selectList.value);
 	renderCatPic();
 }
@@ -66,7 +64,7 @@ function setImage(url) {
 function setInformation(obj) {
 	span.innerHTML = '';
 	for (key in obj) {
-		if (key == "name" || key == "eye_colors" || key == "gender" || key == "films") {
+		if (key == "name" || key == "eye_color" || key == "gender" || key == "films") {
 			let p = document.createElement('p');
 			p.innerHTML = `<strong>${key}:</strong> ${obj[key]}`;
 			span.append(p);
@@ -75,4 +73,4 @@ function setInformation(obj) {
 }
 
 getAllChars();
-selectList.addEventListener('change', selectedOption);
+selectList.addEventListener('change', renderTheData);
