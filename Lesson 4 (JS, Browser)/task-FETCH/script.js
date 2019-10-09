@@ -8,11 +8,9 @@
 * https://ghibliapi.herokuapp.com/#
 **/
 
-function renderCatPic(){
-	fetch(`https://source.unsplash.com/200x200/?cat`)
-		.then((response) => response.url) 
-		.then(url => setImage(url))
-		.catch(err => console.log(err));
+async function renderCatPic(){
+	const picData = await fetch(`https://source.unsplash.com/200x200/?cat`);
+	img.src= picData.url;
 }
 
 function getAllChars() {
@@ -36,7 +34,6 @@ const span = document.querySelector('span');
 // Выведем в выпадающий список всех персонажей (people) с name 'Cat'. 
 // В значении опции - порядковый номер персонажа
 function addOptions(arr) {
-	let cnt = 0;
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].name === 'Cat') {
 			for (let j = 0; j < arr[i].people.length; j++) {
@@ -48,7 +45,7 @@ function addOptions(arr) {
 				}
 				// Добавляем номера в селект
 				const option = document.createElement('option');
-				option.text = ++cnt;
+				option.text = j+1;
 				selectList.append(option);
 				// Запоминаем ссылку на выбранного персонажа
 				option.value = arr[i].people[j];
@@ -60,10 +57,6 @@ function addOptions(arr) {
 function renderTheData() {
 	getInformation(selectList.value);
 	renderCatPic();
-}
-
-function setImage(url) {
-	img.src = url;
 }
 
 // Выводим name, eye_color, gender, films
