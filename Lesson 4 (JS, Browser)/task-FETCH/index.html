@@ -7,7 +7,9 @@
 </head>
 <body>
 	<h1>Выберите номер персонажа</h1>
-	<select></select>
+	<select  onchange="event.currentTarget[0].remove(); event.currentTarget.onchange=null">
+		<option></option>
+	</select>
 
 	<div>
 		<img style="position: relative; float: left; margin: 0 2% 2% 0">

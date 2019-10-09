@@ -13,6 +13,10 @@ async function renderCatPic(){
 	img.src = pictureData.url;	
 }
 
+function getId(link){
+	return fetch(link).then(data=>data.json()).then(dataJson=>dataJson.id);
+}
+
 function getAllChars() {
 	fetch('https://ghibliapi.herokuapp.com/species')
 		.then(response => response.json())
@@ -21,7 +25,7 @@ function getAllChars() {
 }
 
 function getInformation(id) {
-	fetch(`https://ghibliapi.herokuapp.com/species/${id}`)
+	fetch(`https://ghibliapi.herokuapp.com/people/${id}`)
 		.then(response => response.json())
 		.then(data => setInformation(data))
 		.catch(err => console.log(err));
@@ -34,18 +38,19 @@ const span = document.querySelector('span');
 
 // Выведем в выпадающий список всех персонажей (people) с name 'Cat'. 
 // В значении опции - порядковый номер персонажа
-function addOptions(arr) {
+async function addOptions(arr) {
 	
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].name === 'Cat') {
-			for (let j = 0; j < arr[i].people.length; j++) {
-				const option = document.createElement('option');
-				option.text = j+1;
-				option.value = arr[i].id;
-				selectList.append(option);
-			}
-		}
+	const cat = arr.find(element=>element.name==`Cat`)
+			 
+	for(let i=0; i< cat.people.length; i++){
+		const id = await getId(cat.people[i]);
+		const option = document.createElement('option');
+		option.value = id;
+		option.text = i+1;
+		selectList.append(option);
 	}
+				
+			
 }
 
 function selectedOption() {
@@ -72,4 +77,3 @@ function setInformation(obj) {
 
 getAllChars();
 selectList.addEventListener('change', selectedOption);
-selectedOption();
