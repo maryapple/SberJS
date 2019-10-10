@@ -1,3 +1,3 @@
-const a = () => 'Hello world';
+import _ from 'lodash'
 
-alert(a());
+export default (array = []) => _.first(array)
