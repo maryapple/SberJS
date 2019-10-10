@@ -1,4 +1,5 @@
 const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 const output = path.resolve(__dirname, 'target')
 
 module.exports = {
@@ -23,5 +24,14 @@ module.exports = {
                 use: require.resolve('babel-loader')
             }
         ]
-    }
+    },
+    plugins: [
+        // Перекладывать сюда файлы в сборку
+        new CopyPlugin([
+            {
+                from: 'static',
+                to: '.'
+            }
+        ])
+    ]
 }
