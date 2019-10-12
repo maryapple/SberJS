@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 14px;
+    font-family: 'Marmelad', sans-serif;
+}
+
+.container {
+    display: flex;
+    margin: auto 20%;
+    flex-direction: column;
+}
+
+h1 {
+    margin-top: 1rem;
+}
+
+.order {
+    margin-top: 3rem;
+    border: 1px dashed black;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.order-item {
+    padding: 0 2rem;
+}
+
+#cancel {
+    border: 1px solid black;
+    height: 4rem;
+    padding: 1rem;
+    background: #555;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    margin-top: 2rem;
+    /* border: 1px solid black; */
+    height: 25rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 2rem;
+}
+
+.item {
+    display: flex;
+    border: 1px solid black;
+    width: 28%;
+    text-align: center;
+    margin: 1rem;
+    height: 5rem;
+    align-self: center;
+    justify-content: center;
+}
+
+.item p{
+    align-self: center;
+}
+
+@media (max-width: 940px) {
+    .item {
+        width: 28%;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .item {
+        width: 29%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+
+    .container {
+        margin: auto 10%;
+    }
+}
+
+@media (max-width: 660px) {
+    .menu {
+        height: 25rem;
+    }
+    .item {
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .menu {
+        height: 25rem;
+    }
+    .item {
+        width: 42%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .order {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .menu {
+        height: 40rem;
+    }
+    .item {
+        width: 98%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+
+    #cancel {
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+
+    .order-item {
+        padding: .75rem 0;
+    }
+}
+
+@media (max-width: 200px) {
+
+
+    .order, .item, #cancel {
+        font-size: 1rem;
+    }
+    .menu {
+        height: 40rem;
+    }
+    .item {
+        width: 98%;
+        margin: .5rem;
+    }
+}
