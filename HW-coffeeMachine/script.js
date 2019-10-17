@@ -15,37 +15,39 @@ const flatWhite = new StandardDrink('Флэт уайт', 100, 280);
 
 const price = document.querySelector('#price');
 
+const coffee = 
+
 const espressoBtn = document.querySelector('#espresso');
 espressoBtn.addEventListener('click', () => {
     currentOrder(espresso);
 })
 
 const latteBtn = document.querySelector('#latte');
-espressoBtn.addEventListener('click', () => {
+latteBtn.addEventListener('click', () => {
     currentOrder(latte);
 })
 
 const cappuccinoBtn = document.querySelector('#cappuccino');
-espressoBtn.addEventListener('click', () => {
+cappuccinoBtn.addEventListener('click', () => {
     currentOrder(cappuccino);
 })
 
 const bananaLatteBtn = document.querySelector('#bananaLatte');
-espressoBtn.addEventListener('click', () => {
+bananaLatteBtn.addEventListener('click', () => {
     currentOrder(bananaLatte);
 })
 
 const vanillaCappuccinoBtn = document.querySelector('#vanillaCappuccino');
-espressoBtn.addEventListener('click', () => {
+vanillaCappuccinoBtn.addEventListener('click', () => {
     currentOrder(vanillaCappuccino);
 })
 
 const flatWhiteBtn = document.querySelector('#flatWhite');
-espressoBtn.addEventListener('click', () => {
+flatWhiteBtn.addEventListener('click', () => {
     currentOrder(flatWhite);
 })
 
-const chosenCoffeeBtn = document.querySelector('.menu .authorsDrink');
+// const chosenCoffeeBtn = document.querySelector('.menu .authorsDrink');
 
 
 function currentOrder (nameOfDrink) {
