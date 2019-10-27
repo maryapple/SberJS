@@ -1,41 +1,14 @@
 import axios from 'axios'
-
-import { ProductItem } from './product-item'
 import totalWeight from './total-weight'
 import style from './style.css'
-import { Meat } from './meat'
-import { Eggs } from './eggs'
-import { Milk } from './milk'
-import { Beer } from './beer'
-import { Bread } from './bread'
+import separateList from './separatelist.js'
 
 axios({
     method: 'get',
     url: '/api/list'
 })
     .then((response) => {
-        // const list = response.data.map(item => new ProductItem(item))
-        const list = response.data.map((item) => {
-            switch (item) {
-            case this.title === 'Мясо':
-                Meat(item)
-                break
-            case this.title === 'Яйца':
-                Eggs(item)
-                break
-            case this.title === 'Молоко':
-                Milk(item)
-                break
-            case this.title === 'Пиво':
-                Beer(item)
-                break
-            case this.title === 'Хлеб':
-                Bread(item)
-                break
-            default:
-                ProductItem(item)
-            }
-        })
+        const list = separateList(response.data)
         return Promise.resolve(list)
     })
     .then((list) => {
