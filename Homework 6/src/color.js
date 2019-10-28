@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-const repeatingColors = (elem, pos, arr) => pos !== arr.indexOf(elem) || pos !== arr.lastIndexOf(elem)
+const repeatingColors = arr => arr
 
 const setColor = products => {
     if (!products.length) return ''
