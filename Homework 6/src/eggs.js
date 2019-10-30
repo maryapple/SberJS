@@ -5,4 +5,8 @@ export class Eggs extends ProductItem {
         super(item)
         this.category = 'C0'
     }
+
+    makeOmlet () {
+        this.category === 'C0' ? console.log('Готовь омлет!') : console.log('Иди обратно в магаз')
+    }
 }
