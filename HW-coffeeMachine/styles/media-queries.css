@@ -1,0 +1,79 @@
+@media (max-width: 940px) {
+    .item {
+        width: 28%;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .item {
+        width: 29%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+
+    .container {
+        margin: auto 10%;
+    }
+}
+
+@media (max-width: 660px) {
+    .menu {
+        height: 25rem;
+    }
+    .item {
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .menu {
+        height: 25rem;
+    }
+    .item {
+        width: 42%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .order {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .menu {
+        height: 40rem;
+    }
+    .item {
+        width: 98%;
+        font-size: 1.5rem;
+        margin: .5rem;
+    }
+
+    #cancel {
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+
+    .order-item {
+        padding: .75rem 0;
+    }
+}
+
+@media (max-width: 200px) {
+
+
+    .order, .item, #cancel {
+        font-size: 1rem;
+    }
+    .menu {
+        height: 40rem;
+    }
+    .item {
+        width: 98%;
+        margin: .5rem;
+    }
+}
