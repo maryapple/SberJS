@@ -110,3 +110,17 @@ h1 {
     border: 1px solid black;
     transition: 0.2s;
 }
+
+#progressDisplay {
+    border: 1px dashed black;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-around;
+}
+
+#progressBar, h4 {
+    align-self: center;
+    display: flex;
+}

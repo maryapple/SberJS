@@ -83,6 +83,9 @@ let currentPrice = 0
 let currentType = ''
 let currentVolume = 0
 
+// Счетчик напитков. На (5 + 6 = 12) напиток уже нельзя готовить кофе
+let drinkCounter = 0
+
 coffeeBtns.forEach( (elem) => {
     elem.addEventListener('click', () => {
         // Если выбран кофе
@@ -238,4 +241,12 @@ function disableBtnMilk() {
 // Кнопка оплаты
 function activateBtnPay() {
     payBtn.classList.remove('disabled')
+}
+
+payBtn.addEventListener('click', () => {
+    getParamsOfDrink()
+})
+
+function getParamsOfDrink() {
+    
 }
