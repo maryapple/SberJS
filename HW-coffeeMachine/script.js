@@ -96,6 +96,7 @@ coffeeBtns.forEach( (elem) => {
         // Если выбран кофе
         if ((elem.innerText !== 'Молоко') && (elem.innerText !== 'Вишневый сироп')) {
             // Сбрасываем параметры для отображения топпингов и выбор топпингов
+            msg.classList.add('hidden')
             topping.milk = 0
             topping.syrup = 0
             milkDisplay.innerText = ''
@@ -133,6 +134,7 @@ coffeeBtns.forEach( (elem) => {
         // Если молоко выбрано как отдельный напиток
         else if ((elem.innerText === 'Молоко') && (drinkName.innerText === '')) {
             // Сбрасываем параметры для отображения топпингов и выбор топпингов
+            msg.classList.add('hidden')
             topping.milk = 0
             topping.syrup = 0
             milkDisplay.innerText = ''
@@ -248,18 +250,51 @@ function activateBtnPay() {
     payBtn.classList.remove('disabled')
 }
 
+// Оплата напитка
 payBtn.addEventListener('click', () => {
     const finalDrink = getParamsOfDrink()
-    if (finalDrink.type === 'standard') {
-        coffeeProgress(30)
+
+    // Если закончились большие стаканы (но еще есть возможность заказать маленький напиток)
+    if (largeCup.amount === 0 && finalDrink.volume > 250) {
+        msg.classList.remove('hidden')
     }
-    else if (finalDrink.type === 'authors') {
-        coffeeProgress(50)
+    // Если закончились все стаканы 
+    else if (mediumCup.amount === 0 && largeCup.amount === 0) {
+        const allBtns = [...document.getElementsByClassName('item')]
+        allBtns.forEach(element => {
+            element.classList.add('hidden')
+        });
+        const msg = document.querySelector('#msg')
+        msg.classList.remove('hidden')
     }
+    // Если все хорошо
     else {
-        coffeeProgress(80)
+        if (mediumCup.amount > 0 || largeCup.amount > 0) {
+            if (finalDrink.type === 'standard') {
+                coffeeProgress(30)
+            }
+            else if (finalDrink.type === 'authors') {
+                coffeeProgress(50)
+            }
+            else {
+                coffeeProgress(80)
+            }
+        }
+        useCup(finalDrink.volume)
     }
 })
+
+function useCup(volume) {
+    // Если остались маленькие стаканы
+    if ((volume <= mediumCup.volume) && (mediumCup.amount >= 1)) {
+        mediumCup.amount--
+    }
+    // Если нужен большой стакан либо закончился маленький
+    else if ((volume <= largeCup.volume) && (largeCup.amount >= 1)) {
+        largeCup.amount--
+    }
+    // console.log(mediumCup, largeCup)
+}
 
 // Задаем значение для прогресс бара
 function coffeeProgress(time) {

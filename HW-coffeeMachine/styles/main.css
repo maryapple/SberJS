@@ -124,3 +124,7 @@ h1 {
     align-self: center;
     display: flex;
 }
+
+.hidden {
+    display: none;
+}
