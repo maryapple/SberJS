@@ -9,6 +9,8 @@ const payBtn = document.querySelector('#payBtn')
 const cherrySyrupBtn = document.querySelector('#cherrySyrupBtn')
 const milkBtn = document.querySelector('#milkBtn')
 
+const milkDisplay = document.querySelector('#milkDisplay')
+
 const menu = [
     {
         name: "Эспрессо",
@@ -60,29 +62,58 @@ const menu = [
     }
 ]
 
+let currentPrice = 0
 
 coffeeBtns.forEach( (elem) => {
     elem.addEventListener('click', () => {
-        if (elem.innerText !== 'Молоко')
-        // Записываем название и цену выбранного напитка на экран
-        drinkName.innerHTML = elem.innerText
-        let currentObject = menu.filter( (obj) => {
-            if (obj.name === elem.innerText) {
-                return obj.price
-            } 
-        })
-        currentObject = currentObject[0]
-        priceValue.innerHTML = currentObject.price
-        // В зависимости от типа напитка активируем/деактивируем кнопку выбора сиропа
-        if (currentObject.type === 'standard') {
+        // Если выбран кофе
+        if ((elem.innerText !== 'Молоко') && (elem.innerText !== 'Вишневый сироп')) {
+            // Записываем название и цену выбранного напитка на экран
+            drinkName.innerHTML = elem.innerText
+            milkDisplay.innerText = ''
+            let currentObject = menu.filter((obj) => {
+                if (obj.name === elem.innerText) {
+                    return obj.price
+                }
+            })
+            currentObject = currentObject[0]
+            currentPrice = currentObject.price
+            priceValue.innerHTML = currentPrice
+            // В зависимости от типа напитка активируем/деактивируем кнопку выбора сиропа и молока
+            if (currentObject.type === 'standard') {
+                activateBtnSyrup()
+                activateBtnMilk()
+                activateBtnPay()
+            }
+            else if (currentObject.type === 'authors') {
+                activateBtnPay()
+                disableBtnSyrup()
+                disableBtnMilk()
+            }
+        }
+
+        // Если выбрано молоко как отдельный напиток
+        else if ((elem.innerText === 'Молоко') && (drinkName.innerText === '')) {
+            // Записываем название и цену выбранного напитка на экран
+            milkDisplay.innerText = ''
+            drinkName.innerHTML = elem.innerText
+            let currentObject = menu.filter((obj) => {
+                if (obj.name === elem.innerText) {
+                    return obj.price
+                }
+            })
+            currentObject = currentObject[0]
+            currentPrice = currentObject.price
+            priceValue.innerHTML = currentPrice
             activateBtnSyrup()
-            activateBtnMilk()
             activateBtnPay()
         }
-        else if (currentObject.type === 'authors') {
-            activateBtnPay()
-            disableBtnSyrup()
-            disableBtnMilk()
+
+        // Если молоко выбрано как добавка к кофе
+        else if ((elem.innerText === 'Молоко') && (drinkName.innerText !== '')) {
+            milkDisplay.innerText = 'с молоком'
+            currentPrice += 25
+            priceValue.innerHTML = currentPrice
         }
     })
 })
