@@ -110,27 +110,3 @@ h1 {
     border: 1px solid black;
     transition: 0.2s;
 }
-
-
-
-.orderDone {
-    opacity: 1;
-    border: 2px solid black;
-}
-
-.notOrder {
-    opacity: .2;
-    border: 1px solid black;
-    transition: 0.2s;
-}
-
-.notSimple, .outOfCups {
-    opacity: .2;
-    border: 1px solid black;
-}
-
-
-.youNeedToDoOrder {
-    opacity: 1;
-    border: 8px solid green;
-}
