@@ -79,15 +79,16 @@ coffeeBtns.forEach( (elem) => {
                 }
             })
             currentObject = currentObject[0]
+            currentType = currentObject.type
             currentPrice = currentObject.price
             priceValue.innerHTML = currentPrice
             // В зависимости от типа напитка активируем/деактивируем кнопку выбора сиропа и молока
-            if (currentObject.type === 'standard') {
+            if (currentType === 'standard') {
                 activateBtnSyrup()
                 activateBtnMilk()
                 activateBtnPay()
             }
-            else if (currentObject.type === 'authors') {
+            else if (currentType === 'authors') {
                 activateBtnPay()
                 disableBtnSyrup()
                 disableBtnMilk()
@@ -113,14 +114,14 @@ coffeeBtns.forEach( (elem) => {
         }
 
         // Если молоко выбрано как добавка к кофе
-        else if ((elem.innerText === 'Молоко') && (drinkName.innerText !== '')) {
+        else if ((elem.innerText === 'Молоко') && (drinkName.innerText !== '') && (currentType !== 'authors')) {
             milkDisplay.innerText = 'с молоком'
             currentPrice += 25
             priceValue.innerHTML = currentPrice
         }
 
         // Выбран вишневый сироп
-        else if (elem.innerText === 'Вишневый сироп') {
+        else if ((elem.innerText === 'Вишневый сироп') && (currentType !== 'authors')) {
             cherrySyrupDisplay.innerText = '+ порция вишневого сиропа'
             currentPrice += 35
             priceValue.innerHTML = currentPrice
