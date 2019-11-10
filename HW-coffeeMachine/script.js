@@ -83,8 +83,13 @@ let currentPrice = 0
 let currentType = ''
 let currentVolume = 0
 
-// Счетчик напитков. На (5 + 6 = 12) напиток уже нельзя готовить кофе
-let drinkCounter = 0
+// Счетчик напитков
+let drinkCounter = {
+    middle: 0,
+    large: 0
+}
+
+const progressBar = document.querySelector('#progressBar')
 
 coffeeBtns.forEach( (elem) => {
     elem.addEventListener('click', () => {
@@ -244,9 +249,74 @@ function activateBtnPay() {
 }
 
 payBtn.addEventListener('click', () => {
-    getParamsOfDrink()
+    const finalDrink = getParamsOfDrink()
+    if (finalDrink.type === 'standard') {
+        coffeeProgress(30)
+    }
+    else if (finalDrink.type === 'authors') {
+        coffeeProgress(50)
+    }
+    else {
+        coffeeProgress(80)
+    }
 })
 
-function getParamsOfDrink() {
-    
+// Задаем значение для прогресс бара
+function coffeeProgress(time) {
+    let start = 0;
+    const interval = setInterval(() => {
+        if (start > 100) {
+            clearInterval(interval);
+        } else {
+            progressBar.value = start;
+        }
+        start++;
+    }, time);
 }
+
+function getParamsOfDrink() {
+    let obj = {
+        price: 0,
+        type: '',
+        volume: 0
+    }
+    // Получаем цену
+    obj.price = priceValue.innerText
+
+    // Получаем тип (чтобы по нему потом определить время приготовления)
+    let drinktext = drinkName.innerText
+    let typeBuff = menu.filter( (elem) => {
+        if (elem.name === drinktext) {
+            return elem
+        }
+    })
+    typeBuff = typeBuff[0]
+    currentType = typeBuff.type
+    if ( currentType === 'authors') {
+        currentType = 'authors'
+    }
+    else if (( currentType === 'standard') && ((milkDisplay.innerText !== '') || (cherrySyrupDisplay.innerText !== ''))) {
+        currentType = 'customized'
+    }
+    else if ((currentType === 'standard') && (milkDisplay.innerText === '') && (cherrySyrupDisplay.innerText === '')) {
+        currentType = 'standard'
+    }
+    obj.type = currentType
+
+    // Получаем объем напитка
+    let defaultVolume = Number(typeBuff.volume)
+    let syropBuff = cherrySyrupDisplay.innerText
+    if (syropBuff === '+ порция вишневого сиропа') {
+        defaultVolume += 50
+    }
+    else if (syropBuff === '+ двойная порция вишневого сиропа') {
+        defaultVolume += 100
+    }
+    let milkBuff = milkDisplay.innerText
+    if (milkBuff !== '') {
+        defaultVolume += parseInt(milkBuff.match(/\d+/)) * 50
+    }
+    obj.volume = defaultVolume
+    
+    return obj
+ }
