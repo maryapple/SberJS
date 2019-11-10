@@ -14,6 +14,9 @@ const milkBtn = document.querySelector('#milkBtn')
 
 const cancelBtn = document.querySelector('#cancelBtn')
 
+// Блок с фото кофе
+const area = document.querySelector('#area')
+
 const menu = [
     {
         name: "Эспрессо",
@@ -91,6 +94,13 @@ let drinkCounter = {
     large: 0
 }
 
+// Колба для молока, сиропа
+let flask = {
+    milk: 1000,
+    // одна из колб для сиропа (если закончится хоть одна нельзя готовить напиток)
+    syrup: 500
+}
+
 const progressBar = document.querySelector('#progressBar')
 
 coffeeBtns.forEach( (elem) => {
@@ -98,6 +108,7 @@ coffeeBtns.forEach( (elem) => {
         // Если выбран кофе
         if ((elem.innerText !== 'Молоко') && (elem.innerText !== 'Вишневый сироп')) {
             // Сбрасываем параметры для отображения топпингов и выбор топпингов
+            area.classList.add('hidden')
             msg.classList.add('hidden')
             topping.milk = 0
             topping.syrup = 0
@@ -118,7 +129,7 @@ coffeeBtns.forEach( (elem) => {
 
             // Запоминаем объем выбранного напитка
             currentVolume = currentObject.volume
-            console.log(currentVolume)
+            // console.log(currentVolume)
             
             // В зависимости от типа напитка активируем/деактивируем кнопку выбора сиропа и молока
             if (currentType === 'standard') {
@@ -136,6 +147,7 @@ coffeeBtns.forEach( (elem) => {
         // Если молоко выбрано как отдельный напиток
         else if ((elem.innerText === 'Молоко') && (drinkName.innerText === '')) {
             // Сбрасываем параметры для отображения топпингов и выбор топпингов
+            area.classList.add('hidden')
             msg.classList.add('hidden')
             topping.milk = 0
             topping.syrup = 0
@@ -155,7 +167,7 @@ coffeeBtns.forEach( (elem) => {
 
             // Запоминаем объем напитка
             currentVolume = currentObject.volume
-            console.log(currentVolume)
+            // console.log(currentVolume)
             
             // Активируем кнопки топпингов
             activateBtnSyrup()
@@ -274,17 +286,26 @@ payBtn.addEventListener('click', () => {
         if (mediumCup.amount > 0 || largeCup.amount > 0) {
             if (finalDrink.type === 'standard') {
                 coffeeProgress(30)
+                setTimeout(image, 3000)
             }
             else if (finalDrink.type === 'authors') {
                 coffeeProgress(50)
+                setTimeout(image, 5000)
             }
             else {
                 coffeeProgress(80)
+                setTimeout(image, 8000)
             }
         }
         useCup(finalDrink.volume)
+
+        
     }
 })
+
+function image() {
+    area.classList.remove('hidden')
+}
 
 function useCup(volume) {
     // Если остались маленькие стаканы
