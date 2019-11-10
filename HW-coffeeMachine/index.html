@@ -17,22 +17,38 @@
     <div class="container">
         <h1>Кофе аппарат</h1>
         <div class="order">
-            <div id="price" class="order-item">Выберите напиток из меню<span id="price"></span></div>
-            <div id="progressBar"></div>
+            <!-- <div id="price" class="order-item">Выберите напиток из меню<span id="price"></span></div> -->
+
+            <div id="drinkParamsDisplay">
+                <h3>Напиток: </h3>
+                <div id='chosenDrinkDisplay'>
+                    <p id='drinkName'></p>
+                    <p id='addMilk'></p>
+                </div>
+                <div id='cherrySyrupDisplay'></div>
+            </div>
+            <div id='priceDisplay'>
+                <h3>Цена: </h3>
+                <div id='priceValue'></div>
+            </div>
+            <!-- <div id="progressBar">
+                <h3>Готовность: </h3>
+                <progress id='coffee-progress' value='0' max='100'></progress>
+            </div> -->
             <div class="order-item">
-                <button id="cancel">Отмена</button>
+                <button id="cancelBtn">Отмена</button>
             </div>
         </div>
         <div class="menu">
-            <div class="item btn standardDrink" id="espresso"><p>Эспрессо</p></div>
-            <div class="item btn standardDrink" id="latte"><p>Латте</p></div>
-            <div class="item btn standardDrink" id="cappuccino"><p>Каппучино</p></div>
-            <div class="item btn authorsDrink" id="bananaLatte"><p>Банановый латте</p></div>
-            <div class="item btn authorsDrink" id="vanillaCappuccino"><p>Ванильный каппучино</p></div>
-            <div class="item btn authorsDrink" id="flatWhite"><p>Флэт уайт</p></div>
-            <div class="item btn" id="milk"><p>Молоко</p></div>
-            <div class="item btn disabled" id="cherrySyrup"><p>Вишневый сироп</p></div>
-            <div class="item " id="payment"><p>Оплата</p></div>
+            <div class="item coffee" id="espressoBtn"><p>Эспрессо</p></div>
+            <div class="item coffee" id="latteBtn"><p>Латте</p></div>
+            <div class="item coffee" id="cappuccinoBtn"><p>Каппучино</p></div>
+            <div class="item coffee au-coffee" id="bananaLatteBtn"><p>Банановый латте</p></div>
+            <div class="item coffee au-coffee" id="vanillaCappuccinoBtn"><p>Ванильный каппучино</p></div>
+            <div class="item coffee au-coffee" id="flatWhiteBtn"><p>Флэт уайт</p></div>
+            <div class="item coffee" id="milkBtn"><p>Молоко</p></div>
+            <div class="item disabled" id="cherrySyrupBtn"><p>Вишневый сироп</p></div>
+            <div class="item disabled" id="payBtn"><p>Оплата</p></div>
         </div>
     </div>
 

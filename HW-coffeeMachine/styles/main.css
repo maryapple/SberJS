@@ -19,6 +19,10 @@ h1 {
     margin-top: 1rem;
 }
 
+
+
+
+
 /* THE ORDER PANEL */
 
 .order {
@@ -36,9 +40,7 @@ h1 {
     padding: 0 2rem;
 }
 
-/* THE BUTTONS */
-
-#cancel {
+#cancelBtn {
     /* border: 1px solid black; */
     border: none;
     height: 4rem;
@@ -48,22 +50,18 @@ h1 {
     font-size: 1.5rem;
 }
 
-#cancel:hover {
+#cancelBtn:hover {
     background: #dc3545;
     transition: 500ms;
 }
 
-.menu {
-    width: 100%;
-    display: flex;
-    margin-top: 2rem;
-    /* border: 1px solid black; */
-    height: 25rem;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    font-size: 2rem;
-}
 
+
+
+
+
+/* THE BUTTONS OF DRINKS */
+/* item - the common class of all buttons of default state */
 .item {
     display: flex;
     border: 1px solid black;
@@ -80,22 +78,59 @@ h1 {
 }
 
 .item:hover {
-    background: maroon;
+    /* background: maroon;
     color: wheat;
-    transition: 750ms;
+    transition: 750ms; */
+    cursor: pointer;
 }
 
-#payment {
+.menu {
+    width: 100%;
+    display: flex;
+    margin-top: 2rem;
+    height: 25rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 2rem;
+}
+
+
+
+/* #payBtnActive {
     background: green;
-}
+} */
 
-#payment:hover {
+/* #payment:hover {
     background: #dc3545;
     color: wheat;
-}
+} */
 
 .disabled {
     opacity: .2;
     border: 1px solid black;
     transition: 0.2s;
+}
+
+
+
+.orderDone {
+    opacity: 1;
+    border: 2px solid black;
+}
+
+.notOrder {
+    opacity: .2;
+    border: 1px solid black;
+    transition: 0.2s;
+}
+
+.notSimple, .outOfCups {
+    opacity: .2;
+    border: 1px solid black;
+}
+
+
+.youNeedToDoOrder {
+    opacity: 1;
+    border: 8px solid green;
 }

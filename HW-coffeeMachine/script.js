@@ -1,94 +1,111 @@
-/* class StandardDrink {
-    constructor(name, price, volume) {
-        this.name = name;
-        this.price = price;
-        this.volume = volume;
+// Массив из кнопок, которые можно нажимать в начальном состоянии, когда нельзя жать оплату и сироп
+const coffeeBtns = [...document.getElementsByClassName('coffee')];
+
+// Дисплэй с информацией по выбранному напитку
+const drinkName = document.querySelector('#drinkName')
+const priceValue = document.querySelector('#priceValue')
+
+const payBtn = document.querySelector('#payBtn')
+const cherrySyrupBtn = document.querySelector('#cherrySyrupBtn')
+const milkBtn = document.querySelector('#milkBtn')
+
+const menu = [
+    {
+        name: "Эспрессо",
+        price: 90,
+        size: 100,
+        type: 'standard'
+    },
+    {
+        name: "Латте",
+        price: 130,
+        size: 250,
+        type: 'standard'
+    },
+    {
+        name: "Каппучино",
+        price: 110,
+        size: 250,
+        type: 'standard'
+    },
+    {
+        name: "Банановый латте",
+        price: 150,
+        size: 300,
+        type: 'authors'
+    },
+    {
+        name: "Ванильный каппучино",
+        price: 150,
+        size: 300,
+        type: 'authors'
+    },
+    {
+        name: "Флэт уайт",
+        price: 100,
+        size: 280,
+        type: 'authors'
+    },
+    {
+        name: "Молоко",
+        price: 25,
+        size: 50,
+        type: 'standard'
+    },
+    {
+        name: "Вишневый сироп",
+        price: 35,
+        size: 50,
+        type: 'syrup'
     }
-}
-
-class AuthorDrink extends StandardDrink {
-
-}
-
-const espresso = new StandardDrink('Эспрессо', 90, 100);
-const latte = new StandardDrink('Латте', 130, 250);
-const cappuccino = new StandardDrink('Каппучино', 110, 250);
-const bananaLatte = new StandardDrink('Банановый латте', 150, 300);
-const vanillaCappuccino = new StandardDrink('Ванильный каппучино', 150, 300);
-const flatWhite = new StandardDrink('Флэт уайт', 100, 280); */
-
-/* const machine = {
-    init() {
-        
-        const pressedBtn = document.getElementsByClassName('item')
-
-        alert('pressed: ' + pressedBtn)
-    }
-}
-init() */
-
-const syrupBtn = document.querySelector('#cherrySyrup')
-const paymentBtn = document.querySelector('#payment')
+]
 
 
-const coffee = [...document.getElementsByClassName('btn')];
-console.log(coffee)
-
-
-syrupBtn.classList.add('disabled')
-paymentBtn.classList.add('disabled')
-coffee.forEach(function(elem) {
-    
-    elem.addEventListener('click', function() {
-        const btnName = this.innerText
-        const chosenBtn = document.getElementsByClassName('item')
-        if (chosenBtn !== undefined) {
-            console.log(this.innerText)
-            syrupBtn.classList.add('btn')
-            paymentBtn.classList.add('btn')
+coffeeBtns.forEach( (elem) => {
+    elem.addEventListener('click', () => {
+        if (elem.innerText !== 'Молоко')
+        // Записываем название и цену выбранного напитка на экран
+        drinkName.innerHTML = elem.innerText
+        let currentObject = menu.filter( (obj) => {
+            if (obj.name === elem.innerText) {
+                return obj.price
+            } 
+        })
+        currentObject = currentObject[0]
+        priceValue.innerHTML = currentObject.price
+        // В зависимости от типа напитка активируем/деактивируем кнопку выбора сиропа
+        if (currentObject.type === 'standard') {
+            activateBtnSyrup()
+            activateBtnMilk()
+            activateBtnPay()
         }
-
-        /* else if (chosenBtn === undefined){
-            syrupBtn.classList.add('disabled')
-            paymentBtn.classList.add('diabled')
-        } */
+        else if (currentObject.type === 'authors') {
+            activateBtnPay()
+            disableBtnSyrup()
+            disableBtnMilk()
+        }
     })
 })
 
+// Кнопка Сироп
+function activateBtnSyrup() {
+    cherrySyrupBtn.classList.remove('disabled')
+}
 
+function disableBtnSyrup() {
+    cherrySyrupBtn.classList.add('disabled')
+}
 
-const price = document.querySelector('#price');
+// Кнопка Молоко
+function activateBtnMilk() {
+    milkBtn.classList.remove('disabled')
+}
 
-/* const espressoBtn = document.querySelector('#espresso');
-espressoBtn.addEventListener('click', () => {
-    currentOrder(espresso);
-})
+function disableBtnMilk() {
+    milkBtn.classList.add('disabled')
+}
 
-const latteBtn = document.querySelector('#latte');
-latteBtn.addEventListener('click', () => {
-    currentOrder(latte);
-})
-
-const cappuccinoBtn = document.querySelector('#cappuccino');
-cappuccinoBtn.addEventListener('click', () => {
-    currentOrder(cappuccino);
-})
-
-const bananaLatteBtn = document.querySelector('#bananaLatte');
-bananaLatteBtn.addEventListener('click', () => {
-    currentOrder(bananaLatte);
-})
-
-const vanillaCappuccinoBtn = document.querySelector('#vanillaCappuccino');
-vanillaCappuccinoBtn.addEventListener('click', () => {
-    currentOrder(vanillaCappuccino);
-})
-
-const flatWhiteBtn = document.querySelector('#flatWhite');
-flatWhiteBtn.addEventListener('click', () => {
-    currentOrder(flatWhite);
-}) */
-
-function currentOrder (nameOfDrink) {
-    price.textContent = `Стоимость ${nameOfDrink.name}: ` + nameOfDrink.price + 'рублей';
+// Кнопка оплаты
+function activateBtnPay() {
+    payBtn.classList.remove('disabled')
 }
