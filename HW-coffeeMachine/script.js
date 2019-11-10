@@ -64,6 +64,7 @@ const menu = [
 ]
 
 let currentPrice = 0
+let currentType = ''
 
 coffeeBtns.forEach( (elem) => {
     elem.addEventListener('click', () => {
@@ -121,10 +122,22 @@ coffeeBtns.forEach( (elem) => {
         }
 
         // Выбран вишневый сироп
-        else if ((elem.innerText === 'Вишневый сироп') && (currentType !== 'authors')) {
-            cherrySyrupDisplay.innerText = '+ порция вишневого сиропа'
-            currentPrice += 35
-            priceValue.innerHTML = currentPrice
+        else if (
+                (elem.innerText === 'Вишневый сироп') && 
+                (currentType !== 'authors') && 
+                (cherrySyrupDisplay.innerText !== '+ двойная порция вишневого сиропа')
+            ) {
+            if (cherrySyrupDisplay.innerText === '') {
+                cherrySyrupDisplay.innerText = '+ порция вишневого сиропа'
+                currentPrice += 35
+                priceValue.innerHTML = currentPrice
+            }
+            else if (cherrySyrupDisplay.innerText === '+ порция вишневого сиропа') {
+                cherrySyrupDisplay.innerText = '+ двойная порция вишневого сиропа'
+                currentPrice += 35
+                priceValue.innerHTML = currentPrice
+                disableBtnSyrup()
+            }
         }
     })
 })
