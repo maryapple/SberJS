@@ -116,7 +116,7 @@ h1 {
 }
 
 img {
-    float: right;
+    
     padding: 1rem;
 }
 
@@ -128,3 +128,12 @@ img {
 }
 
 @keyframes blink { 50% { border-color:#fff ; }  }
+
+#area {
+    display: flexbox;
+    align-self: center;
+}
+
+#area p {
+    font-size: 3rem;
+}

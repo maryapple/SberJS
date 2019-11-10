@@ -193,7 +193,7 @@ coffeeBtns.forEach( (elem) => {
 
             // Запоминаем объем
             currentVolume += 50
-            console.log(currentVolume)
+            // console.log(currentVolume)
 
             // Смотрим, будет ли при следующем добавлении молока или 
             // сиропа превышение объема стакана. Если да, то тогда деактивируем кнопки топпингов
@@ -285,21 +285,58 @@ payBtn.addEventListener('click', () => {
     else {
         if (mediumCup.amount > 0 || largeCup.amount > 0) {
             if (finalDrink.type === 'standard') {
+                let song = new Audio('audio.mp3');
                 coffeeProgress(30)
                 setTimeout(image, 3000)
+                setTimeout(() => {
+                    song.play()
+                }, 5000);
+                setTimeout(() => {
+                    song.play()
+                }, 125000);
+
+                area.addEventListener('click', () => {
+                    area.classList.add('hidden')
+                    song.pause()
+                    song.pause()
+                })
             }
             else if (finalDrink.type === 'authors') {
+                let song = new Audio('audio.mp3');
                 coffeeProgress(50)
                 setTimeout(image, 5000)
+                setTimeout(() => {
+                    song.play()
+                }, 10000);
+                setTimeout(() => {
+                    song.play()
+                }, 16000);
+
+                area.addEventListener('click', () => {
+                    area.classList.add('hidden')
+                    song.pause()
+                    song.pause()
+                })
             }
             else {
+                let song = new Audio('audio.mp3');
                 coffeeProgress(80)
                 setTimeout(image, 8000)
+                setTimeout(() => {
+                    song.play()
+                }, 13000);
+                setTimeout(() => {
+                    song.play()
+                }, 19000);
+
+                area.addEventListener('click', () => {
+                    area.classList.add('hidden')
+                    song.pause()
+                    song.pause()
+                })
             }
         }
         useCup(finalDrink.volume)
-
-        
     }
 })
 
@@ -386,8 +423,10 @@ cancelBtn.addEventListener('click', () => {
     priceValue.innerHTML = ''
     progressBar.value = 0
     disableBtnSyrup()
+    area.classList.add('hidden')
     payBtn.classList.add('disabled')
     topping.syrup = 0
     topping.milk = 0
     startProcess = 0;
 })
+
