@@ -10,6 +10,7 @@ const cherrySyrupBtn = document.querySelector('#cherrySyrupBtn')
 const milkBtn = document.querySelector('#milkBtn')
 
 const milkDisplay = document.querySelector('#milkDisplay')
+const cherrySyrupDisplay = document.querySelector('#cherrySyrupDisplay')
 
 const menu = [
     {
@@ -71,6 +72,7 @@ coffeeBtns.forEach( (elem) => {
             // Записываем название и цену выбранного напитка на экран
             drinkName.innerHTML = elem.innerText
             milkDisplay.innerText = ''
+            cherrySyrupDisplay.innerText = ''
             let currentObject = menu.filter((obj) => {
                 if (obj.name === elem.innerText) {
                     return obj.price
@@ -96,6 +98,7 @@ coffeeBtns.forEach( (elem) => {
         else if ((elem.innerText === 'Молоко') && (drinkName.innerText === '')) {
             // Записываем название и цену выбранного напитка на экран
             milkDisplay.innerText = ''
+            cherrySyrupDisplay.innerText = ''
             drinkName.innerHTML = elem.innerText
             let currentObject = menu.filter((obj) => {
                 if (obj.name === elem.innerText) {
@@ -113,6 +116,13 @@ coffeeBtns.forEach( (elem) => {
         else if ((elem.innerText === 'Молоко') && (drinkName.innerText !== '')) {
             milkDisplay.innerText = 'с молоком'
             currentPrice += 25
+            priceValue.innerHTML = currentPrice
+        }
+
+        // Выбран вишневый сироп
+        else if (elem.innerText === 'Вишневый сироп') {
+            cherrySyrupDisplay.innerText = '+ порция вишневого сиропа'
+            currentPrice += 35
             priceValue.innerHTML = currentPrice
         }
     })
