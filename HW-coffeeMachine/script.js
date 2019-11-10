@@ -12,6 +12,8 @@ const payBtn = document.querySelector('#payBtn')
 const cherrySyrupBtn = document.querySelector('#cherrySyrupBtn')
 const milkBtn = document.querySelector('#milkBtn')
 
+const cancelBtn = document.querySelector('#cancelBtn')
+
 const menu = [
     {
         name: "Эспрессо",
@@ -301,9 +303,9 @@ function coffeeProgress(time) {
     let start = 0;
     const interval = setInterval(() => {
         if (start > 100) {
-            clearInterval(interval);
+            clearInterval(interval)
         } else {
-            progressBar.value = start;
+            progressBar.value = start
         }
         start++;
     }, time);
@@ -355,3 +357,16 @@ function getParamsOfDrink() {
     
     return obj
  }
+
+cancelBtn.addEventListener('click', () => {
+    drinkName.innerHTML = ''
+    cherrySyrupDisplay.innerHTML = ''
+    milkDisplay.innerHTML = ''
+    priceValue.innerHTML = ''
+    progressBar.value = 0
+    disableBtnSyrup()
+    payBtn.classList.add('disabled')
+    topping.syrup = 0
+    topping.milk = 0
+    startProcess = 0;
+})
