@@ -314,14 +314,23 @@ payBtn.addEventListener('click', () => {
     }
 })
 
+const late = document.querySelector('#late')
+const take = document.querySelector('#take')
+
 function playAndStopSong() {
     let song = new Audio('silk.mp3')
     song.play()
-
     area.addEventListener('click', () => {
         area.classList.add('hidden')
         song.pause()
+        
+        progressBar.value = 0
     })
+/*     if (!flag) {
+        take.classList.add('hidden')
+        late.classList.remove('hidden')
+    } */
+    
 }
 
 function image() {
