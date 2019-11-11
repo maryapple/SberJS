@@ -264,6 +264,10 @@ function activateBtnPay() {
     payBtn.classList.remove('disabled')
 }
 
+function disableBtnPay() {
+    payBtn.classList.add('disabled')
+}
+
 // Оплата напитка
 payBtn.addEventListener('click', () => {
     const finalDrink = getParamsOfDrink()
@@ -285,60 +289,40 @@ payBtn.addEventListener('click', () => {
     else {
         if (mediumCup.amount > 0 || largeCup.amount > 0) {
             if (finalDrink.type === 'standard') {
-                let song = new Audio('audio.mp3');
                 coffeeProgress(30)
                 setTimeout(image, 3000)
                 setTimeout(() => {
-                    song.play()
+                    playAndStopSong()
                 }, 5000);
-                setTimeout(() => {
-                    song.play()
-                }, 125000);
-
-                area.addEventListener('click', () => {
-                    area.classList.add('hidden')
-                    song.pause()
-                    song.pause()
-                })
             }
             else if (finalDrink.type === 'authors') {
-                let song = new Audio('audio.mp3');
                 coffeeProgress(50)
                 setTimeout(image, 5000)
                 setTimeout(() => {
-                    song.play()
+                    playAndStopSong()
                 }, 10000);
-                setTimeout(() => {
-                    song.play()
-                }, 16000);
-
-                area.addEventListener('click', () => {
-                    area.classList.add('hidden')
-                    song.pause()
-                    song.pause()
-                })
             }
             else {
-                let song = new Audio('audio.mp3');
                 coffeeProgress(80)
                 setTimeout(image, 8000)
                 setTimeout(() => {
-                    song.play()
+                    playAndStopSong()
                 }, 13000);
-                setTimeout(() => {
-                    song.play()
-                }, 19000);
-
-                area.addEventListener('click', () => {
-                    area.classList.add('hidden')
-                    song.pause()
-                    song.pause()
-                })
             }
         }
         useCup(finalDrink.volume)
     }
 })
+
+function playAndStopSong() {
+    let song = new Audio('silk.mp3')
+    song.play()
+
+    area.addEventListener('click', () => {
+        area.classList.add('hidden')
+        song.pause()
+    })
+}
 
 function image() {
     area.classList.remove('hidden')
@@ -424,9 +408,8 @@ cancelBtn.addEventListener('click', () => {
     progressBar.value = 0
     disableBtnSyrup()
     area.classList.add('hidden')
-    payBtn.classList.add('disabled')
+    disableBtnPay()
     topping.syrup = 0
     topping.milk = 0
     startProcess = 0;
 })
-
