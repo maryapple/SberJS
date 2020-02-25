@@ -39,3 +39,4 @@ axios({
     .catch(() => {
         document.body.innerHTML = 'Сервис недоступен!'
     })
+    
